@@ -5,6 +5,16 @@ It combines an intuitive front-end built with **HTML, CSS, and Chart.js** with a
 
 ---
 
+## 🧩 Project Overview
+
+The Smart Home Energy Management System (SHEMS) allows users to:
+- Track their **energy consumption** and **energy prices** across multiple time frames.
+- Visualize real-time analytics using **interactive charts**.
+- Log in securely and analyze personalized usage insights.
+- Support **location-based** tracking and data-driven optimization.
+
+---
+
 ## 🏗️ Project Structure
 
 ```bash
@@ -26,64 +36,62 @@ SHEMS/
 │
 └── static/
     └── (optional) CSS / JS assets if extended
+💡 Key Features
+🔐 User Authentication
+Secure user sign-up and login using Flask sessions
 
+Form validation for credentials and user data
 
----
+📊 Real-Time Data Visualization
+Interactive visualizations powered by Chart.js
 
-## 💡 Key Features
+Track and compare energy usage across:
 
-### 🔐 User Authentication
-- Secure user sign-up and login using **Flask sessions**  
-- Form validation for credentials and user data  
+Hourly → hourlyEnergyPriceChange.html
 
-### 📊 Real-Time Data Visualization
-- Interactive graphs powered by **Chart.js**  
-- Tracks energy consumption and prices across:
-  - **Hourly** → `hourlyEnergyPriceChange.html`
-  - **Daily** → `dailyEnergyConsumption.html`
-  - **Total** → `totalEnergyConsumption.html`
-  - **Yearly** → `yearlyEnergyConsumption.html`
+Daily → dailyEnergyConsumption.html
 
-### 🌍 Location-Based Analytics
-- Each visualization is linked to a specific **location_id**
-- Dynamic route handling with Flask’s `url_for()`
+Total → totalEnergyConsumption.html
 
-### 📈 Data from Backend (Flask API)
-- `fetch()` POST requests send `location_id` and `selected_date` to Flask routes  
-- Flask returns JSON responses with `labels` and `values` for plotting
+Yearly → yearlyEnergyConsumption.html
 
-### 💾 MySQL Integration
-- Centralized schema (`SQLFile.sql`) for user, location, and energy tables  
-- Designed for scalable data ingestion and analysis  
+🌍 Location-Based Analytics
+Each visualization is linked to a unique location_id
 
----
+Dynamic routing handled by Flask’s url_for()
 
-## 🧰 Tech Stack
+📈 Flask API Integration
+Backend provides JSON responses with labels and values
 
-| Layer | Technology |
-|-------|-------------|
-| **Frontend** | HTML5, CSS3, JavaScript (Chart.js) |
-| **Backend** | Python Flask |
-| **Database** | MySQL |
-| **Visualization** | Chart.js |
-| **Server** | Flask’s built-in development server |
-| **Version Control** | Git / GitHub |
+Frontend fetch() calls update graphs in real time
 
----
+💾 MySQL Integration
+Centralized schema (SQLFile.sql) for users, locations, and energy data
 
-## 🧠 Key Insights & Learnings
+Optimized for large-scale energy datasets
 
-- Demonstrates **full-stack integration** from UI → backend → database → visualization  
-- Uses **Flask’s Jinja2 templating** to pass `location_id` and `selected_date` seamlessly  
-- Each visualization script fetches live data from backend APIs, emphasizing **data-driven design**  
-- The system structure makes it easy to extend with **machine learning** or **IoT integrations** (e.g., real sensor data or energy optimization models)  
+🧰 Tech Stack
+Component	Tools / Libraries
+Frontend	HTML5, CSS3, JavaScript, Chart.js
+Backend	Flask (Python)
+Database	MySQL
+Visualization	Chart.js
+Server	Flask Development Server
+Version Control	Git & GitHub
 
----
+🧠 Key Insights & Learnings
+Showcases end-to-end full-stack integration from UI → API → Database → Visualization
 
-## ⚙️ How to Run the Project
+Leverages Jinja2 templating for dynamic data flow
 
-### 1️⃣ Clone the Repository
-```bash
+Demonstrates a modular and scalable backend structure
+
+Can be easily extended for IoT data, real-time analytics, and machine learning forecasting
+
+🚀 How to Run
+1️⃣ Clone the Repository
+bash
+Copy code
 git clone https://github.com/yourusername/SHEMS.git
 cd SHEMS
 2️⃣ Set Up the Environment
@@ -95,9 +103,9 @@ venv\Scripts\activate        # On Windows
 
 pip install flask mysql-connector-python
 3️⃣ Configure MySQL
-Start your MySQL server.
+Start your MySQL server
 
-Create the database:
+Create a database:
 
 sql
 Copy code
@@ -107,7 +115,7 @@ Import the schema:
 bash
 Copy code
 mysql -u root -p SHEMS < SQLFile.sql
-Update your connection details in app.py:
+Update your credentials in app.py:
 
 python
 Copy code
@@ -121,33 +129,31 @@ connection = mysql.connector.connect(
 bash
 Copy code
 python app.py
-By default, Flask runs on:
+App will run at:
+👉 http://127.0.0.1:5000
 
-cpp
-Copy code
-http://127.0.0.1:5000
-🗂️ Repository Contents Summary
+🗂️ Repository Contents
 File	Description
-app.py	Flask backend with API routes for login, signup, and visualization
+app.py	Flask backend with all endpoints
 SQLFile.sql	MySQL database schema and setup
-index.html	Entry page with login state
-login.html / signup.html	User authentication pages
-dailyEnergyConsumption.html	Daily energy consumption visualization
-totalEnergyConsumption.html	Total daily energy overview
-hourlyEnergyPriceChange.html	Hourly energy price fluctuation
-energyPrices.html	Daily price trends
-yearlyEnergyConsumption.html	Multi-year trend visualization
+index.html	Landing page with login detection
+login.html / signup.html	Authentication templates
+dailyEnergyConsumption.html	Daily consumption graph
+totalEnergyConsumption.html	Total energy consumption
+hourlyEnergyPriceChange.html	Hourly price fluctuation visualization
+energyPrices.html	Daily energy price trend visualization
+yearlyEnergyConsumption.html	Yearly overview visualization
 
-🚀 Future Enhancements
-Integration with IoT smart meters
+🧭 Future Enhancements
+📡 IoT Smart Meter Integration
 
-Real-time MQTT data ingestion
+⚙️ Real-time MQTT Data Streaming
 
-Predictive analytics for consumption forecasting
+🧮 Predictive Analytics for Energy Forecasting
 
-Admin dashboard for aggregated insights
+🖥️ Admin Dashboard for Usage Insights
 
-Cloud deployment on AWS / Render / Railway
+☁️ Cloud Deployment (AWS, Render, or Railway)
 
 👩‍💻 Author
 Anushka Patil
