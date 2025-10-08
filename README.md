@@ -6,7 +6,6 @@ It combines an intuitive front-end built with **HTML, CSS, and Chart.js** with a
 ---
 
 ## 🏗️ Project Structure
-## 🏗️ Project Structure
 
 ```bash
 SHEMS/
