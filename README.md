@@ -36,62 +36,61 @@ SHEMS/
 │
 └── static/
     └── (optional) CSS / JS assets if extended
-💡 Key Features
-🔐 User Authentication
-Secure user sign-up and login using Flask sessions
 
-Form validation for credentials and user data
+## 💡 Key Features
 
-📊 Real-Time Data Visualization
-Interactive visualizations powered by Chart.js
+### 🔐 User Authentication
+- Secure user sign-up and login using **Flask sessions**  
+- Form validation for credentials and user data  
 
-Track and compare energy usage across:
+### 📊 Real-Time Data Visualization
+- Interactive graphs powered by **Chart.js**  
+- Tracks energy consumption and prices across:
+  - **Hourly** → `hourlyEnergyPriceChange.html`
+  - **Daily** → `dailyEnergyConsumption.html`
+  - **Total** → `totalEnergyConsumption.html`
+  - **Yearly** → `yearlyEnergyConsumption.html`
 
-Hourly → hourlyEnergyPriceChange.html
+### 🌍 Location-Based Analytics
+- Each visualization is linked to a specific **location_id**
+- Dynamic route handling with Flask’s `url_for()`
 
-Daily → dailyEnergyConsumption.html
+### 📈 Data from Backend (Flask API)
+- `fetch()` POST requests send `location_id` and `selected_date` to Flask routes  
+- Flask returns JSON responses with `labels` and `values` for plotting
 
-Total → totalEnergyConsumption.html
+### 💾 MySQL Integration
+- Centralized schema (`SQLFile.sql`) for user, location, and energy tables  
+- Designed for scalable data ingestion and analysis  
 
-Yearly → yearlyEnergyConsumption.html
+---
 
-🌍 Location-Based Analytics
-Each visualization is linked to a unique location_id
+## 🧰 Tech Stack
 
-Dynamic routing handled by Flask’s url_for()
+| Layer | Technology |
+|-------|-------------|
+| **Frontend** | HTML5, CSS3, JavaScript (Chart.js) |
+| **Backend** | Python Flask |
+| **Database** | MySQL |
+| **Visualization** | Chart.js |
+| **Server** | Flask’s built-in development server |
+| **Version Control** | Git / GitHub |
 
-📈 Flask API Integration
-Backend provides JSON responses with labels and values
+---
 
-Frontend fetch() calls update graphs in real time
+## 🧠 Key Insights & Learnings
 
-💾 MySQL Integration
-Centralized schema (SQLFile.sql) for users, locations, and energy data
+- Demonstrates **full-stack integration** from UI → backend → database → visualization  
+- Uses **Flask’s Jinja2 templating** to pass `location_id` and `selected_date` seamlessly  
+- Each visualization script fetches live data from backend APIs, emphasizing **data-driven design**  
+- The system structure makes it easy to extend with **machine learning** or **IoT integrations** (e.g., real sensor data or energy optimization models)  
 
-Optimized for large-scale energy datasets
+---
 
-🧰 Tech Stack
-Component	Tools / Libraries
-Frontend	HTML5, CSS3, JavaScript, Chart.js
-Backend	Flask (Python)
-Database	MySQL
-Visualization	Chart.js
-Server	Flask Development Server
-Version Control	Git & GitHub
+## ⚙️ How to Run the Project
 
-🧠 Key Insights & Learnings
-Showcases end-to-end full-stack integration from UI → API → Database → Visualization
-
-Leverages Jinja2 templating for dynamic data flow
-
-Demonstrates a modular and scalable backend structure
-
-Can be easily extended for IoT data, real-time analytics, and machine learning forecasting
-
-🚀 How to Run
-1️⃣ Clone the Repository
-bash
-Copy code
+### 1️⃣ Clone the Repository
+```bash
 git clone https://github.com/yourusername/SHEMS.git
 cd SHEMS
 2️⃣ Set Up the Environment
@@ -103,9 +102,9 @@ venv\Scripts\activate        # On Windows
 
 pip install flask mysql-connector-python
 3️⃣ Configure MySQL
-Start your MySQL server
+Start your MySQL server.
 
-Create a database:
+Create the database:
 
 sql
 Copy code
@@ -115,7 +114,7 @@ Import the schema:
 bash
 Copy code
 mysql -u root -p SHEMS < SQLFile.sql
-Update your credentials in app.py:
+Update your connection details in app.py:
 
 python
 Copy code
@@ -129,31 +128,33 @@ connection = mysql.connector.connect(
 bash
 Copy code
 python app.py
-App will run at:
-👉 http://127.0.0.1:5000
+By default, Flask runs on:
 
-🗂️ Repository Contents
+cpp
+Copy code
+http://127.0.0.1:5000
+🗂️ Repository Contents Summary
 File	Description
-app.py	Flask backend with all endpoints
+app.py	Flask backend with API routes for login, signup, and visualization
 SQLFile.sql	MySQL database schema and setup
-index.html	Landing page with login detection
-login.html / signup.html	Authentication templates
-dailyEnergyConsumption.html	Daily consumption graph
-totalEnergyConsumption.html	Total energy consumption
-hourlyEnergyPriceChange.html	Hourly price fluctuation visualization
-energyPrices.html	Daily energy price trend visualization
-yearlyEnergyConsumption.html	Yearly overview visualization
+index.html	Entry page with login state
+login.html / signup.html	User authentication pages
+dailyEnergyConsumption.html	Daily energy consumption visualization
+totalEnergyConsumption.html	Total daily energy overview
+hourlyEnergyPriceChange.html	Hourly energy price fluctuation
+energyPrices.html	Daily price trends
+yearlyEnergyConsumption.html	Multi-year trend visualization
 
-🧭 Future Enhancements
-📡 IoT Smart Meter Integration
+🚀 Future Enhancements
+Integration with IoT smart meters
 
-⚙️ Real-time MQTT Data Streaming
+Real-time MQTT data ingestion
 
-🧮 Predictive Analytics for Energy Forecasting
+Predictive analytics for consumption forecasting
 
-🖥️ Admin Dashboard for Usage Insights
+Admin dashboard for aggregated insights
 
-☁️ Cloud Deployment (AWS, Render, or Railway)
+Cloud deployment on AWS / Render / Railway
 
 👩‍💻 Author
 Anushka Patil
